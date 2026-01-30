@@ -1,0 +1,64 @@
+/* ምርቶቹ የሚቀመጡበት ቦታ (Container) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 40px;
+  background-color: #eaeded; /* የአማዞን አይነት Background */
+}
+
+/* እያንዳንዱ የምርት ካርድ */
+.product-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+.product-card:hover {
+  transform: translateY(-5px); /* ሲነካ ትንሽ ከፍ እንዲል */
+}
+
+.product-card img {
+  max-height: 200px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.product-info h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  height: 45px; /* ረጅም ርዕስ ካላቸው እኩል እንዲሆኑ */
+  overflow: hidden;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #b12704; /* የአማዞን ቀይ ቀለም */
+}
+
+.rating {
+  margin: 10px 0;
+  color: #f0c14b;
+}
+
+/* 'Add to Cart' በተን */
+.add-to-cart {
+  background: #ffd814;
+  border: 1px solid #fcd200;
+  border-radius: 20px;
+  padding: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.add-to-cart:hover {
+  background: #f7ca00;
+}
