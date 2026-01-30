@@ -1,0 +1,273 @@
+/* General Header Container */
+.header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #131921;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  color: white;
+}
+
+.header__main {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* Left Section: Logo & Location */
+.header__left {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
+  width: 100px;
+  object-fit: contain;
+  margin: 0 20px;
+  margin-top: 18px;
+}
+.header__logo:hover {
+  opacity: 0.9;
+  border: 2px solid white;
+  border-radius: 5px;
+  margin: 1 18px;
+}
+
+.header__location {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  padding: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+.header__location:hover {
+  border: 1px solid white;
+}
+
+.header__locationText p {
+  font-size: 12px;
+  color: #ccc;
+}
+
+.header__locationText span {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Middle Section: Search Bar */
+.header__search {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-left: 10px;
+  background-color: white;
+}
+
+.header__search:focus-within {
+  box-shadow: 0 0 0 3px #febd69; /* Amazon's orange focus glow */
+}
+
+.header__searchSelect {
+  background-color: #f3f3f3;
+  width: 50px;
+  height: 40px;
+  padding: 5px;
+  border: none;
+  border-right: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.header__searchInput {
+  height: 40px;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  outline: none;
+}
+
+.header__searchIconContainer {
+  height: 40px;
+  padding: 5px;
+  background-color: #febd69;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  cursor: pointer;
+}
+
+.header__searchIcon {
+  color: #131921;
+  font-size: 20px;
+}
+
+/* Right Section: Nav Links */
+.header__right {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.header__link {
+  color: white;
+  text-decoration: none;
+}
+
+.header__option {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 8px;
+  border: 1px solid transparent;
+}
+
+.header__option:hover {
+  border: 1px solid white;
+}
+
+.header__optionLineOne {
+  font-size: 12px;
+}
+
+.header__optionLineTwo {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* Flag and Language */
+.header__language {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.header__flag {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.header__langSelect {
+  background: white;
+  border: none;
+  font-weight: bold;
+  outline: none;
+}
+
+/* Cart / Basket */
+.header__optionBasket {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid transparent;
+}
+
+.header__optionBasket:hover {
+  border: 1px solid white;
+}
+
+.header__basketIcon {
+  font-size: 30px;
+}
+
+.header__basketCount {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #f08804;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header__search {
+    display: none; /* Hide search bar on small screens */
+  }
+
+  .header__optionLineTwo {
+    font-size: 12px; /* Reduce font size for better fit */
+  }
+}
+@media (max-width: 480px) {
+  .header__location {
+    display: none; /* Hide location on very small screens */
+  }
+
+  .header__optionLineOne {
+    display: none; /* Hide first line of options on very small screens */
+  }
+}
+/* Container for the entire lower header */
+.lowerHeader {
+  background-color: #232f3e;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  height: 40px;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Left side: "Deliver to" section */
+.lowerHeaderLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  padding: 5px 8px;
+  border: 1px solid transparent;
+  margin-right: 20px;
+}
+
+.lowerHeaderLeft:hover {
+  border: 1px solid white;
+}
+
+.lowerHeaderLeft p {
+  margin: 0;
+  font-size: 12px;
+  color: #cccccc; /* Slightly faded text for "Deliver to" */
+}
+
+.lowerHeaderLeftIcon {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Right side: Navigation links */
+.lowerHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Adds spacing between the items */
+}
+
+.lowerHeaderRight p {
+  margin: 0;
+  padding: 8px 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.lowerHeaderRight p:hover {
+  border: 1px solid white;
+}
+
+/* Responsive: Hide some links on very small screens */
+@media (max-width: 768px) {
+  .lowerHeaderRight p:nth-child(n+4) {
+    display: none;
+  }
+}

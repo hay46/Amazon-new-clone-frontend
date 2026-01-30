@@ -1,0 +1,65 @@
+/* Container for the entire lower header */
+.lowerHeader {
+  background-color: #232f3e;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  height: 40px;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Left side: "Deliver to" section */
+.lowerHeaderLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  padding: 5px 8px;
+  border: 1px solid transparent;
+  margin-right: 20px;
+}
+
+.lowerHeaderLeft:hover {
+  border: 1px solid white;
+}
+
+.lowerHeaderLeft p {
+  margin: 0;
+  font-size: 12px;
+  color: #cccccc; /* Slightly faded text for "Deliver to" */
+}
+
+.lowerHeaderLeftIcon {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Right side: Navigation links */
+.lowerHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Adds spacing between the items */
+}
+
+.lowerHeaderRight p {
+  margin: 0;
+  padding: 8px 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.lowerHeaderRight p:hover {
+  border: 1px solid white;
+}
+
+/* Responsive: Hide some links on very small screens */
+@media (max-width: 768px) {
+  .lowerHeaderRight p:nth-child(n+4) {
+    display: none;
+  }
+}
