@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Category.css"
 import CategoryCard from './CategoryCard'
-import {Categoryinfo} from './Categoryfullinfo'
+import {Categoryinfo} from "./CategoryFullinfo"
 function Category() {
   return (
     <div className="category-container">
