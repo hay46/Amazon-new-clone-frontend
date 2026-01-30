@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Carouselimg } from "./img/data"; 
-import classes from "./carousel.module.css";
+import classes from "./Carousel.module.css";
 
 function CarouselEffect() {
   const settings = {
@@ -16,23 +16,33 @@ function CarouselEffect() {
     autoplaySpeed: 3000,
   };
 
+  // ዳታው መኖሩን ለማረጋገጥ (ለቼክ ብቻ)
+  if (!Carouselimg || Carouselimg.length === 0) {
+    return <div>Loading...</div>;
+  }
+
+  // Normalize Slider (react-slick may export a CJS object with a .default)
+  const Slick = Slider && Slider.default ? Slider.default : Slider;
+
+  if (!Slick) {
+   
+    console.error("Slick component not found. Imported Slider:", Slider);
+    return <div>Slider unavailable</div>;
+  }
+
   return (
     <div className={classes.carousel_container}>
-      <Slider {...settings}>
-        {Carouselimg.map((imageItem, index) => {
-          return (
-            <div key={index} className={classes.slide_container}>
-              <img
-                src={imageItem.img1}
-                alt={`Amazon Banner ${index}`}
-                className={classes.carousel_image}
-              />
-            </div>
-          );
-        })}
-      </Slider>
-      
-      {/* የአማዞን ካሩሰል ታችኛው ክፍል ላይ የሚታየው Fade effect */}
+      <Slick {...settings}>
+        {Carouselimg.map((imageItem, index) => (
+          <div key={index} className={classes.slide_container}>
+            <img
+              src={imageItem.img1}
+              alt={`slide-${index}`}
+              className={classes.carousel_image}
+            />
+          </div>
+        ))}
+        </Slick>
       <div className={classes.gradient_overlay}></div>
     </div>
   );
