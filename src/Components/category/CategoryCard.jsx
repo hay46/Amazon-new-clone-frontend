@@ -7,7 +7,7 @@ function CategoryCard(data ) {
   return (
     console.log(data),
     <div className="category-card-container">
-      {" "}
+      
       {/* Class ጨምረናል */}
       <Link to={`/category/${data.title}`} className="category-card-link">
 
