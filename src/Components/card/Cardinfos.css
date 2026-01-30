@@ -1,0 +1,69 @@
+.card-information {
+  background-color: #ffffff;
+  width: 310px;
+  min-height: 440px;
+  padding: 20px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease;
+  z-index: 5; /* መደበኛ አቀማመጥ */
+}
+
+.card-information:hover {
+  transform: translateY(-5px); /* ማውዝ ሲያርፍበት ትንሽ ከፍ እንዲል */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.card-information a {
+  text-decoration: none;
+  color: #0f1111;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* የካርዱ ርዕስ (Title) */
+.card-img h1 {
+  font-size: 21px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+/* የምስሉ አቀማመጥ */
+.card-information img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain; /* ምስሉ እንዳይቆረጥ ሙሉ በሙሉ እንዲታይ */
+  background-color: #f7f7f7;
+  margin-bottom: 15px;
+}
+
+/* የመግለጫ ጽሑፍ (Description) */
+.img-description {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #0f1111;
+  margin-bottom: 10px;
+  /* ጽሑፉ በጣም ረጅም ከሆነ በሁለተኛው መስመር ላይ እንዲቆረጥ */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* "Shopping Know" ሊንክ */
+.shopping.know {
+  color: #007185;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: auto; /* ሁልጊዜ ከካርዱ ግርጌ እንዲሆን */
+}
+
+.shopping.know:hover {
+  color: #c7511f;
+  text-decoration: underline;
+}
