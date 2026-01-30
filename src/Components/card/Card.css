@@ -1,0 +1,18 @@
+.crad-information-to-maping {
+  display: flex;
+  flex-wrap: wrap; /* ስክሪኑ ሲጠብ ካርዶቹ ወደ ታች እንዲወርዱ */
+  justify-content: center;
+  margin-top: 30px; /* ዋናው ሚስጥር ይህ ነው! ካርዶቹን ወደ ላይ ይሰቅላቸዋል */
+  position: relative;
+  z-index: 100; /* ከስላይደሩ በላይ እንዲሆኑ */
+  padding: 0 20px;
+}
+/* Add this to the container holding your cards */
+.card-container-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  z-index: 5; /* መላው የካርድ ክፍል ከካሮሴሉ ውጤት በላይ እንዲሆን */
+}
