@@ -1,0 +1,33 @@
+.category-container {
+  display: flex; /* አራቱንም ካርዶች ጎን ለጎን ለማሰለፍ */
+  flex-direction: row; /* በረድፍ እንዲሰለፉ ያደርጋል */
+  flex-wrap: nowrap; /* ስክሪኑ ቢጠብም ወደ ታች እንዳይወርዱ (አንድ ረድፍ ላይ እንዲሆኑ) */
+  justify-content: center; /* ካርዶቹን መሃል ላይ ያሰልፋል */
+  gap: 20px; /* በካርዶቹ መካከል ያለ ክፍተት */
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* --- መደራረቡን (Overlap) ለመከላከል --- */
+  position: relative;
+  z-index: 100; /* ከካሮሴሉ ውጤት በላይ እንዲሆን */
+  margin-top: -150px; /* የአማዞን ስታይል ለመከተል (ካሮሴሉ ላይ እንዲንሳፈፍ) */
+}
+.card-row-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* ስክሪኑ ሲጠበብ ወደ ታች እንዲወርዱ */
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  background-color: #eaeded; /* የአማዞን የጀርባ ቀለም */
+  width: 100%;
+  margin-top: 20px; /* ከ Category ካርዶች በታች ክፍተት እንዲኖር */
+}
+/* ካርዶቹ ከካሮሴሉ በታች (ያለ መደራረብ) እንዲሆኑ ከፈለጉ margin-top: 20px; ያድርጉት */
+
+/* ስክሪኑ በጣም ትንሽ ሲሆን (ለሞባይል) */
+@media (max-width: 768px) {
+  .category-container {
+    margin-top: 20px;   /* በሞባይል ላይ ተንሳፋፊው ውጤት እንዲጠፋ */
+  }
+}
