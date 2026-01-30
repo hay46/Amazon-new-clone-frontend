@@ -1,5 +1,5 @@
 import React from "react";
-import "./Product.module.css"; // ስሙ ተስተካክሏል
+import "./Product.css"; // ስሙ ተስተካክሏል
 
 function ProductCard({ product }) {
   // ዳታዎቹን በጥንቃቄ ማውጣት (Optional chaining ?. በመጠቀም)
