@@ -1,5 +1,5 @@
 import React from 'react'
-import './prodactditail.module.css'
+import './ProductDital.css'
 function ProdactDitail() {
   return (
     <div>ProdactDitail</div>
