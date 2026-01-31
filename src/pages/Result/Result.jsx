@@ -1,8 +1,8 @@
 import React from 'react'
-import './result.module.css'
+import classes from './result.module.css'
 function Result() {
   return (
-    <div>Result</div>
+    <div className={classes.container}>Result</div>
   )
 }
 

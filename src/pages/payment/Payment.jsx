@@ -1,8 +1,8 @@
 import React from 'react'
-import './payment.module.css'
+import classes from'./payment.module.css'
 function Payment() {
   return (
-    <div>Payment</div>
+    <div className={classes.container}>Payment</div>
   )
 }
 

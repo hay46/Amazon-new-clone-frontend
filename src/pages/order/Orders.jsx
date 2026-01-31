@@ -1,8 +1,8 @@
 import React from 'react'
-import './order.module.css'
+import classes from './order.module.css'
 function Orders() {
   return (
-    <div>this id the Orders</div>
+    <div className={classes.container}>this id the Orders</div>
   )
 }
 

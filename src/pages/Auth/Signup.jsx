@@ -1,8 +1,8 @@
 import React from 'react'
-import './signup.module.css'
+import classes from './signup.module.css'
 function Signup() {
   return (
-    <div>Signup</div>
+    <div className={classes.container}>Signup</div>
   )
 }
 

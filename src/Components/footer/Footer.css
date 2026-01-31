@@ -1,0 +1,110 @@
+/* --- Footer Container and Colors --- */
+footer {
+    background-color: #232f3e; /* Standard secondary blue for main sections */
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* --- 1. Back to Top Button --- */
+.footer-back-to-top {
+    display: block;
+    background-color: #37475a; /* Slightly lighter blue for the button bar */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.footer-back-to-top:hover {
+    background-color: #485769;
+}
+
+/* --- 2. Main Service Links Section --- */
+.footer-main {
+    display: flex; /* Horizontal columns */
+    justify-content: center;
+    padding: 40px 0;
+    border-bottom: 1px solid #3a4553;
+}
+
+.footer-column {
+    width: 200px; /* Define column width */
+    margin: 0 15px;
+}
+
+.footer-column h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li a {
+    color: #ddd; /* Light gray links */
+    text-decoration: none;
+    font-size: 0.85rem;
+    display: block;
+    padding: 5px 0;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+/* --- 3. Logo, Language, & Country Selector --- */
+.footer-bottom-nav {
+    background-color: #232f3e;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-logo-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-logo {
+    width: 76px; /* White Amazon logo size */
+    margin-right: 30px;
+}
+
+.footer-selector {
+    border: 1px solid #888;
+    padding: 8px 10px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+/* --- 4. Global Commerce Links (The very bottom bar) --- */
+.footer-global-links {
+    background-color: #131a22; /* Very dark/black background */
+    color: #ddd;
+    padding: 30px 0 50px 0;
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+.footer-global-links a {
+    color: #ddd;
+    text-decoration: none;
+    margin: 0 7px;
+    white-space: nowrap;
+}
+
+.footer-global-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-copyright {
+    display: block;
+    margin-top: 20px;
+}

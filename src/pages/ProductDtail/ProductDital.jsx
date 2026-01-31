@@ -1,8 +1,8 @@
 import React from 'react'
-import './ProductDital.css'
+import classes from'./ProductDital.css'
 function ProdactDitail() {
   return (
-    <div>ProdactDitail</div>
+    <div className={classes.container}>ProdactDitail</div>
   )
 }
 
