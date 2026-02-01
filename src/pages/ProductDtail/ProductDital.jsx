@@ -1,44 +1,46 @@
-import React, { useEffect, useState } from 'react'
-import './ProductDital.css'
-import Layout from '../../Components/layout/Layout'
-import { useParams } from 'react-router-dom'
-import { CardinformationData } from '../../Components/card/CardinformationData' // CardinformationData ፋንታ endpoint ተጠቀም
-import axios from 'axios'
-import CardInfos from '../../Components/card/CardInfos'
-
+import React, { useEffect, useState } from 'react';
+import classes from'./ProductDital.module.css';
+import Layout from '../../Components/layout/Layout';
+import { useParams } from 'react-router-dom';
+import { CardinformationData } from '../../Components/card/CardinformationData';
+import axios from 'axios';
+import CardInfos from '../../Components/card/CardInfos';
+import Loder from '../../Components/loder/Loder';
 function ProdactDitail() {
-  const { id } = useParams(); // ከሊንኩ ላይ ID መቀበል
-  const [product, setProduct] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const { id } = useParams(); 
+  const [product, setProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // 1. ሊንኩ በትክክል መጻፉን አረጋግጥ (ለምሳሌ /products/1)
-    axios.get(`${CardinformationData}/${id}`)
+    // ማሳሰቢያ፡ የ API ሊንክህ /products/ የሚል የሚፈልግ ከሆነ እዚህ ጋር ጨምረው
+    axios.get(`${CardinformationData}/products/${id}`)
       .then((res) => {
         setProduct(res.data);
         setIsLoading(false);
       })
       .catch((err) => {
         console.error('Error fetching product details:', err);
-        setIsLoading(false);
+        setIsLoading(true);
       });
   }, [id]);
 
   return (
-    <Layout>
+  <Layout>
+    <div className={classes.detail_wrapper}> {/* አዲስ wrapper */}
       {isLoading ? (
         <p>Loading...</p>
+      ) : product ? (
+        <CardInfos 
+          data={product}  
+          renderAdd={true} 
+          flex={true} // ይህ ለ CardInfos ጎን ለጎን እንዲሆን ምልክት ይሰጠዋል
+        />
       ) : (
-        <div style={{ padding: "20px" }}>
-          {/* 2. እዚህ ጋር አንድ ካርድ ብቻ ነው የሚታየው */}
-          <CardInfos 
-            product={product} 
-          
-          />
-        </div>
+        <p>Product not found!</p>
       )}
-    </Layout>
-  )
+    </div>
+  </Layout>
+);
 }
 
 export default ProdactDitail;
