@@ -3,7 +3,6 @@ import classes from './Result.module.css'
 import Layout from '../../Components/layout/Layout'
 import { useParams } from 'react-router-dom'
 import { endpoint } from '../../api/endpoint'
-//import ProductCard from '../../Components/ProductCard/ProductCard'
 import axios from 'axios'
 function Result() {
   const { CategoryName } = useParams()

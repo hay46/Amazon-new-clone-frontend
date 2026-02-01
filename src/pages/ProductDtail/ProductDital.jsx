@@ -1,18 +1,19 @@
-import React, { useEffect } from 'react'
-import classes from './ProductDital.module.css'
+import React, { useEffect ,useState} from 'react'
+import './ProductDital.css'
 import Layout from '../../Components/layout/Layout'
-//import Card from '../../Components/card/Card'
 import { useParams } from 'react-router-dom'
 import { CardinformationData } from '../../Components/card/CardinformationData.js'
 import axios from 'axios'
-
+import Card from '../../Components/card/Card.jsx'
 function ProdactDitail() {
   const { id } = useParams();
+  const [product, setproduct]=useState({})
   useEffect(() => {
     // Fetch product details using the id
    axios.get(`${CardinformationData}/${id}`)
       .then(response => {
-        console.log('Product Details:', response.data);
+
+        setproduct(response.data)
       })
       .catch(error => {
         console.error('Error fetching product details:', error);
@@ -23,7 +24,10 @@ function ProdactDitail() {
   return (
 
     <Layout>
-<div className={classes.container}>Product Detail for ID: {id}</div>
+
+    <div>
+<Card product={product} id={id}/>
+    </div>
     </Layout>
     
   )

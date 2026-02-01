@@ -7,7 +7,7 @@ import Orders from './pages/order/Orders'
 import Payment from './pages/payment/Payment'
 import Result from './pages/Result/Result'
 import ProdactDitail from './pages/ProductDtail/ProductDital'
-//import ProductCard from './Components/ProductCard/ProductCard'
+//import ProductCard from './Components/product/ProductCard'
 import Card from './Components/card/Card'
 function Routers() {
   return (
