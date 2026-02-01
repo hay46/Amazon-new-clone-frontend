@@ -1,6 +1,6 @@
 import React from "react";
 import "./Product.css"; // ስሙ ተስተካክሏል
-
+import { Link } from "react-router-dom";
 function ProductCard({ product }) {
   // ዳታዎቹን በጥንቃቄ ማውጣት (Optional chaining ?. በመጠቀም)
   const title = product.ItemInfo?.Title?.DisplayValue || "No Title Available";
@@ -16,7 +16,7 @@ function ProductCard({ product }) {
 
   return (
     <div className="product-card">
-      <a href={link} target="_blank" rel="noreferrer">
+      <Link to={link} target="_blank" rel="noreferrer">
         <img
           src={image || fallbackImage}
           onError={(e) => {
@@ -25,7 +25,8 @@ function ProductCard({ product }) {
           }}
           alt={title}
         />
-      </a>
+      </Link>
+      
       <div className="product-info">
         <h3>{title}</h3>
         <p className="price">{price}</p>

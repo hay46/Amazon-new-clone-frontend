@@ -7,6 +7,8 @@ import Orders from './pages/order/Orders'
 import Payment from './pages/payment/Payment'
 import Result from './pages/Result/Result'
 import ProdactDitail from './pages/ProductDtail/ProductDital'
+//import ProductCard from './Components/ProductCard/ProductCard'
+import Card from './Components/card/Card'
 function Routers() {
   return (
     <div>
@@ -16,8 +18,8 @@ function Routers() {
         <Route path='/cart' element={<Cart />} />
         <Route path='/orders' element={<Orders />} />
         <Route path='/payment' element={<Payment />} />
-        <Route path='/result' element={<Result />} />
-        <Route path='/product/:id' element={<ProdactDitail />} />
+        <Route path='/category/:CategoryName' element={<Result />} />
+        <Route path='/Card/:id' element={<ProdactDitail />} />
       </Routes>
     </div>
   )
