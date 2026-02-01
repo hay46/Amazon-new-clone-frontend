@@ -14,7 +14,7 @@ function CardInfos ({data}) {
         </span>
         <img src={data.imageLink} alt={data.title} />
         <p className="img-description">{data.description}</p>
-        <p className="shopping know">shopping Know</p>
+        <p className="shopping know">ProdactDitail</p>
       </Link>
       
     </div>

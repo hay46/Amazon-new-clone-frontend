@@ -4,6 +4,7 @@ import Layout from '../../Components/layout/Layout'
 import { useParams } from 'react-router-dom'
 import { endpoint } from '../../api/endpoint'
 import axios from 'axios'
+import CategoryCard from '../../Components/category/CategoryCard'
 function Result() {
   const { CategoryName } = useParams()
   const [Result, setresult] = useState([])
@@ -35,7 +36,11 @@ function Result() {
           </div>
         </div>
       ) : (
-        <p>No products found in this category.</p>
+        <p>
+<CategoryCard
+Result={Result}
+/>
+        </p>
       )}
     </Layout>
   )

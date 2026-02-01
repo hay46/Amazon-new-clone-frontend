@@ -1,36 +1,44 @@
-import React, { useEffect ,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import './ProductDital.css'
 import Layout from '../../Components/layout/Layout'
 import { useParams } from 'react-router-dom'
-import { CardinformationData } from '../../Components/card/CardinformationData.js'
+import { CardinformationData } from '../../Components/card/CardinformationData' // CardinformationData ፋንታ endpoint ተጠቀም
 import axios from 'axios'
-import Card from '../../Components/card/Card.jsx'
-function ProdactDitail() {
-  const { id } = useParams();
-  const [product, setproduct]=useState({})
-  useEffect(() => {
-    // Fetch product details using the id
-   axios.get(`${CardinformationData}/${id}`)
-      .then(response => {
+import CardInfos from '../../Components/card/CardInfos'
 
-        setproduct(response.data)
+function ProdactDitail() {
+  const { id } = useParams(); // ከሊንኩ ላይ ID መቀበል
+  const [product, setProduct] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    // 1. ሊንኩ በትክክል መጻፉን አረጋግጥ (ለምሳሌ /products/1)
+    axios.get(`${CardinformationData}/${id}`)
+      .then((res) => {
+        setProduct(res.data);
+        setIsLoading(false);
       })
-      .catch(error => {
-        console.error('Error fetching product details:', error);
+      .catch((err) => {
+        console.error('Error fetching product details:', err);
+        setIsLoading(false);
       });
   }, [id]);
-    
 
   return (
-
     <Layout>
-
-    <div>
-<Card product={product} id={id}/>
-    </div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div style={{ padding: "20px" }}>
+          {/* 2. እዚህ ጋር አንድ ካርድ ብቻ ነው የሚታየው */}
+          <CardInfos 
+            product={product} 
+          
+          />
+        </div>
+      )}
     </Layout>
-    
   )
 }
 
-export default ProdactDitail
+export default ProdactDitail;
