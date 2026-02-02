@@ -6,7 +6,7 @@ import { BiCart } from "react-icons/bi";
 import LowerHeader from "./LowerHeader";
 import { DataContext } from "../dataprovider/Dataprovider";
 const Header =() =>{
-  const {state,dispatch}=useContext(DataContext)
+const {state}=useContext(DataContext);
   const {basket}=state;
   console.log(state.basket.length)
   return (
