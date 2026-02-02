@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './CardInfos.css'
 import {CardinformationData} from './CardinformationData.js'
 import {Link} from 'react-router-dom'
-
+import { DataContext } from '../dataprovider/Dataprovider.jsx'
+import {type} from '../../utilitiy/Action.js'
 function CardInfos ({data}) {
-   // console.log(data.imageLink);
+  const {dispatch } = useContext(DataContext);
+  console.log("data in cardinfo",data);
+  const ADD_TO_CART = () => {
+    dispatch({ type: type.ADD_TO_BASKET, payload: data });
+  };
+
+
   return (
     <div className="card-information">
       <Link to={`/Card/${data.id}`}>
@@ -15,7 +22,11 @@ function CardInfos ({data}) {
         <img src={data.imageLink} alt={data.title} />
         <p className="img-description">{data.description}</p>
         <p className="shopping know">ProdactDitail</p>
+        <p className="img-price">Price: ${data.price}</p>
       </Link>
+      <button onClick={ADD_TO_CART}>
+        Add to Cart
+      </button>
       
     </div>
   );
