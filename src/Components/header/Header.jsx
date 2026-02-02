@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./Header.module.css";
 import { BsSearch } from "react-icons/bs";
 import { SlLocationPin } from "react-icons/sl";
 import { BiCart } from "react-icons/bi";
 import LowerHeader from "./LowerHeader";
-
-function Header() {
+import { DataContext } from "../dataprovider/Dataprovider";
+const Header =() =>{
+  const {state,dispatch}=useContext(DataContext)
+  const {basket}=state;
+  console.log(state.basket.length)
   return (
     <div>
     <section className={classes.header}>
@@ -94,7 +97,8 @@ function Header() {
               <span
                 className={`${classes.header__optionLineTwo} ${classes.header__basketCount}`}
               >
-                0
+
+              {basket.length}
               </span>
             </div>
           </a>

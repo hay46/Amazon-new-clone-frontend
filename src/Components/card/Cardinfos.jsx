@@ -6,7 +6,6 @@ import { DataContext } from '../dataprovider/Dataprovider.jsx'
 import {type} from '../../utilitiy/Action.js'
 function CardInfos ({data}) {
   const {dispatch } = useContext(DataContext);
-  console.log("data in cardinfo",data);
   const ADD_TO_CART = () => {
     dispatch({ type: type.ADD_TO_BASKET, payload: data });
   };
