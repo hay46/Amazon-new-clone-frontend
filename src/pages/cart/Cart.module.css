@@ -1,0 +1,104 @@
+/* ዋናው ኮንቴይነር */
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 30px 20px;
+  gap: 20px;
+  background-color: #f0f2f2; /* ለዓይን ምቹ የሆነ ቀለል ያለ ግራጫ */
+  min-height: 80vh;
+}
+
+/* የካርት እቃዎች ዝርዝር ኮንቴይነር */
+.cart__container {
+  background-color: white;
+  padding: 20px;
+  flex: 0.75;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.cart__container h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #232f3e;
+}
+
+.cart__container h3 {
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+/* እያንዳንዱ ምርት በካርት ውስጥ */
+.cart_product {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 20px 0;
+  transition: transform 0.2s ease;
+}
+
+.cart_product:hover {
+  background-color: #fafafa;
+}
+
+/* የክፍያ ማጠቃለያ (Summary Section) */
+.cart__summary {
+  background-color: white;
+  padding: 20px;
+  flex: 0.25;
+  height: fit-content;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+}
+
+.subtotal {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.this_order_contains {
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* Checkout በተን */
+.checkout__button {
+  background-color: #ffd814;
+  border: 1px solid #fcd200;
+  border-radius: 8px;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #09bdbd;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.checkout__button:hover {
+  background-color: #f7ca00;
+  border-color: #f2c200;
+}
+
+/* ባዶ ካርት ሲሆን የሚታይ ጽሑፍ */
+.cart__container p {
+  padding: 40px;
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Responsive Design ለሞባይል */
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .cart__container, .cart__summary {
+    flex: 1;
+  }
+}

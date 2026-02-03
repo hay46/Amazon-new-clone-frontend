@@ -2,6 +2,7 @@ import React from "react";
 import "./Product.css"; // ስሙ ተስተካክሏል
 import { Link } from "react-router-dom";
 function ProductCard({ product }) {
+
   // ዳታዎቹን በጥንቃቄ ማውጣት (Optional chaining ?. በመጠቀም)
   const title = product.ItemInfo?.Title?.DisplayValue || "No Title Available";
   const image = product.Images?.Primary?.Large?.URL;
@@ -9,7 +10,6 @@ function ProductCard({ product }) {
     product.Offers?.Listings?.[0]?.Price?.DisplayAmount ||
     "Price not available";
   const link = product.DetailPageURL;
-
   
   return (
     <div className="product-card">

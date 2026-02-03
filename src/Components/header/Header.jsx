@@ -8,6 +8,7 @@ import { DataContext } from "../dataprovider/Dataprovider";
 import { Link } from "react-router-dom";
 const Header =() =>{
 const {state}=useContext(DataContext);
+
   const {basket}=state;
   console.log("basket in header",basket);
   return (
