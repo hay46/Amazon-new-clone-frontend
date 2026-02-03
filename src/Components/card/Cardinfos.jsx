@@ -22,12 +22,15 @@ function CardInfos ({data}) {
         <p className="img-description">{data.description}</p>
         <p className="shopping know">ProdactDitail</p>
         <p className="img-price">Price: ${data.price}</p>
+        <p>{data.renderAdd}</p>
       </Link>
     
         
-          <button onClick={ADD_TO_CART}>
+         <button onClick={ADD_TO_CART}>
             Add to Cart
           </button>
+        
+          
         
       
       

@@ -7,7 +7,7 @@ function Card() {
     <div className="crad-information-to-maping">
       {
       CardinformationData.map((info) => (
-        <CardInfos key={info.id} data={info} /> // እዚህ ጋር return እንዲያደርግ በ () ተተክቷል
+        <CardInfos key={info.id}data={info} /> // እዚህ ጋር return እንዲያደርግ በ () ተተክቷል
       ))
       }
     </div>

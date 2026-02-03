@@ -26,7 +26,7 @@ function Result() {
           <h2>Results for Category: {CategoryName}</h2>
           <div className={classes.productGrid}>
             {Result?.map(product => (
-              <div key={product.id} className={classes.productCard}>
+              <div key={product.id} renderAdd ={true} className={classes.productCard}>
                 <h3>{product.title}</h3>
                 <img src={product.image} alt={product.title} className={classes.productImage} />
                 <p className={classes.productPrice}>${product.price}</p>
