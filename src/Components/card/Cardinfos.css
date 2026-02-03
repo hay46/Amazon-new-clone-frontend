@@ -1,4 +1,6 @@
-/* ዋናው የካርድ መያዣ */
+/* =========================================
+   1. Base Card Container (Default Grid View)
+   ========================================= */
 .card-information {
   background-color: white;
   border-radius: 10px;
@@ -14,40 +16,65 @@
   border: 1px solid #f0f0f0;
 }
 
-/* ካርዱ ላይ ማውሱ ሲያርፍ (Hover effect) */
 .card-information:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* የሊንኩ ማስዋቢያ (Link styling) */
+/* =========================================
+   2. Typography & Links
+   ========================================= */
 .card-information a {
   text-decoration: none;
   color: inherit;
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
-/* የካርዱ ርዕስ (Title) */
 .card-information h1 {
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 10px;
   color: #333;
   line-height: 1.4;
-  /* ረጅም ርዕስ ከሆነ በሁለተኛው መስመር እንዲቆረጥ ያደርጋል */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-/* የምስል ማስቀመጫ */
+/* Product ID (The small number) */
+.card-information > a > h1:first-child {
+  font-size: 0.8rem;
+  color: #999;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.img-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.img-price {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+/* =========================================
+   3. Media (Images)
+   ========================================= */
 .card-information img {
   width: 100%;
   height: 200px;
-  object-fit: contain; /* ምስሉ ሳይቆረጥ በስርዓት እንዲቀመጥ */
+  object-fit: contain;
   margin: 15px 0;
   transition: transform 0.3s ease;
 }
@@ -56,40 +83,53 @@
   transform: scale(1.05);
 }
 
-/* የመግለጫ ጽሁፍ (Description) */
-.img-description {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 15px;
-  line-height: 1.5;
-  /* ጽሁፉ ከ 3 መስመር በላይ ከሆነ ይሸሸጋል */
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* "Product Detail" የሚለው ቁልፍ (Button-like style) */
-.shopping.know {
+/* =========================================
+   4. Buttons (Add to Cart & Detail)
+   ========================================= */
+.add-to-cart-btn, .shopping.know {
   margin-top: auto;
-  background-color: #febd69; /* Amazon-style yellow */
+  background-color: #febd69;
   color: #111;
   text-align: center;
   padding: 10px;
+  border: none;
   border-radius: 5px;
   font-weight: 600;
   font-size: 0.85rem;
+  cursor: pointer;
   transition: background-color 0.2s;
 }
 
-.shopping.know:hover {
+.add-to-cart-btn:hover, .shopping.know:hover {
   background-color: #f3a847;
 }
 
-/* የID ቁጥር በትንሹ ጥግ ላይ እንዲሆን */
-.card-information > a > h1:first-child {
-  font-size: 0.8rem;
-  color: #999;
-  font-weight: 400;
-  margin-bottom: 5px;
+/* =========================================
+   5. Flex Layout (For Cart Page)
+   ========================================= */
+/* When the 'product_flex' class is added via props */
+.product_flex {
+  flex-direction: row; /* Changes vertical to horizontal */
+  max-width: 100%;     /* Takes full width of the cart container */
+  align-items: flex-start;
+  gap: 30px;
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0;
+}
+
+.product_flex img {
+  width: 200px; /* Bigger image for list view */
+  height: 200px;
+}
+
+.product_flex .img-description {
+  -webkit-line-clamp: 5; /* Show more text in list view */
+}
+
+/* Remove hover lift effect in Cart view */
+.product_flex:hover {
+  transform: none;
+  box-shadow: none;
 }

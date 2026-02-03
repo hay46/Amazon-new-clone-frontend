@@ -4,14 +4,14 @@ export const CardinformationData = [
     title: "Card Title 1",
     description: "This is the description for Card 1.",
     imageLink:
-      "https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/BAU2024Aug/WomenWatches_2x._SY232_CB564394432_.jpg",
+      "https://m.media-amazon.com/images/I/61-G1nYG+BL._AC_SY400_.jpg",
   },
   {
     id: 2,
     title: "Card Title 2",
     description: "This is the description for Card 2.",
     imageLink:
-      "https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2021/June/Fuji_Quad_Keyboard_2x._SY232_CB667159063_.jpg",
+      "https://m.media-amazon.com/images/I/71GBp7+P4SL._AC_SY200_.jpg",
   },
   {
     id: 3,

@@ -5,10 +5,11 @@ import { SlLocationPin } from "react-icons/sl";
 import { BiCart } from "react-icons/bi";
 import LowerHeader from "./LowerHeader";
 import { DataContext } from "../dataprovider/Dataprovider";
+import { Link } from "react-router-dom";
 const Header =() =>{
 const {state}=useContext(DataContext);
   const {basket}=state;
-  console.log(state.basket.length)
+  console.log("basket in header",basket);
   return (
     <div>
     <section className={classes.header}>
@@ -91,7 +92,7 @@ const {state}=useContext(DataContext);
             </div>
           </a>
 
-          <a href="/Cart" className={classes.header__link}>
+          <Link to="/Cart" className={classes.header__link}>
             <div className={classes.header__optionBasket}>
               <BiCart className={classes.header__basketIcon} />
               <span
@@ -101,7 +102,7 @@ const {state}=useContext(DataContext);
               {basket.length}
               </span>
             </div>
-          </a>
+          </Link>
         </div>
       </section>
       {/* Lower Navigation */}

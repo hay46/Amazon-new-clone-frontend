@@ -5,9 +5,10 @@ import Layout from '../../Components/layout/Layout';
 import ProductCard from '../../Components/product/ProductCard';
 
 function Cart() {
+  // stateን መጀመሪያ ከcontext እናውጣ
   const {state}=useContext(DataContext);
     const {basket}=state;
-    console.log(state.basket.length) // ቀለል ያለ አጻጻፍ
+    console.log("basket in header",basket);
 
   return (
     <Layout>
@@ -20,16 +21,19 @@ function Cart() {
             basket?.length === 0 ? (
               <p>No item in your cart</p>
             ) : (
-              basket?.map((item, i) => (
-                <section key={i} className={classes.cart_product}>
-                   <ProductCard
-                    product={item} // 'item' ሳይሆን 'product' መሆኑን አረጋግጥ
-                    renderDesc={true}
-                    renderAdd={false}
-                    flex={true}
-                  />
-                </section>
-              ))
+              // እቃዎቹን አንድ በአንድ ለማውጣት map እንጠቀማለን
+              basket?.map((item) => {
+                return (
+                  <section key={item.id} className={classes.cart_product}>
+                    <ProductCard
+                      product={item}  // እዚህ ጋር በProductCardህ ውስጥ ያለውን ስም (product ወይም item) አረጋግጥ
+                      renderDesc={true}
+                      renderAddToCart={false}
+                      flex={true}
+                    />
+                  </section>
+                )
+              })
             )
           }
         </div>

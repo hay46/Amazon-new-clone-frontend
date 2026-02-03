@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 function CategoryCard(data ) {
   // {data} ብለው ያስተካክሉት
   return (
-    console.log(data),
     <div className="category-card-container">
       
       {/* Class ጨምረናል */}
