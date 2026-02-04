@@ -16,7 +16,16 @@ export const reducer = (state = initialState, action) => {
         basket : [...state.basket,{...action.item,amount:1}]
       }
     }else{
-      
+      const updatbasket = state.basket.map((item)=>{
+        
+          item.id ===action.item.id? {...item,amount:item.amount + 1} : item
+        }
+      )
+      return{
+        ...state,
+        basket: updatbasket
+
+      }
     }
 
     default:
