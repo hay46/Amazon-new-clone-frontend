@@ -41,7 +41,7 @@ const Product = () => {
         Images: {
           Primary: {
             Large: {
-              URL: "https://m.media-amazon.com/images/I/71Y-9-8lSXL._AC_SL1500_.jpg",
+              URL: "https://m.media-amazon.com/images/I/61NGnpjoRDL._AC_SL1500_.jpg",
             },
           },
         },
@@ -93,7 +93,7 @@ const Product = () => {
         Images: {
           Primary: {
             Large: {
-              URL: "https://m.media-amazon.com/images/I/71fu8fSFrNL._AC_SL1500_.jpg",
+              URL: "https://m.media-amazon.com/images/I/71xb2xkN5qL._AC_SL1500_.jpg",
             },
           },
         },

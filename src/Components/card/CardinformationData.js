@@ -85,15 +85,15 @@ export const CardinformationData = [
   {
     id: 12,
     price: 44.99,
-    title: "Card Title 3",
-    description: "This is the description for Card 3.",
+    title: "Card Title 12",
+    description: "This is the description for Card 12.",
     imageLink: "https://m.media-amazon.com/images/I/71gCmu+BNAL._AC_SY400_.jpg",
   },
   {
-    id: 12,
+    id: 16,
     price: 39.99,
-    title: "Card Title 12",
-    description: "This is the description for Card 12.",
+    title: "Card Title 16",
+    description: "This is the description for Card 16.",
     imageLink:
       "https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/DskBTFQuadCards/Fuji_BTF_Quad_Cards_2x_Home_decor._SY232_CB558654384_.jpg",
   },

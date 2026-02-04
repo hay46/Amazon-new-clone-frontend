@@ -3,7 +3,8 @@ import classes from'./ProductDital.module.css';
 import Layout from '../../Components/layout/Layout';
 import { useParams } from 'react-router-dom';
 import { CardinformationData } from '../../Components/card/CardinformationData';
-import axios from 'axios';
+import axios from 'axios'
+import { endpoint } from '../../api/endpoint';
 import CardInfos from '../../Components/card/CardInfos';
 import Loder from '../../Components/loder/Loder';
 function ProdactDitail() {
@@ -13,7 +14,7 @@ function ProdactDitail() {
 
   useEffect(() => {
     // ማሳሰቢያ፡ የ API ሊንክህ /products/ የሚል የሚፈልግ ከሆነ እዚህ ጋር ጨምረው
-    axios.get(`${CardinformationData}/products/${id}`)
+    axios.get(`${endpoint}/products/${id}`)
       .then((res) => {
         setProduct(res.data);
         setIsLoading(false);
