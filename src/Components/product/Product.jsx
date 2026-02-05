@@ -84,6 +84,7 @@ const Product = () => {
         DetailPageURL: "https://www.amazon.com/dp/B07ZPKZSSC",
       },
       {
+      
         ASIN: "B08PPDL386",
         ItemInfo: {
           Title: {

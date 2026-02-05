@@ -5,13 +5,14 @@ import Layout from '../../Components/layout/Layout';
 import ProductCard from '../../Components/product/ProductCard';
 import { Link } from 'react-router-dom';
 import { type } from '../../utilitiy/Action';
-
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 function Cart() {
   // stateን መጀመሪያ ከcontext እናውጣ
   const { state, dispatch } = useContext(DataContext);
   const { basket } = state;
 
   const increment = (item) => {
+    
     dispatch({
       type: type.ADD_TO_BASKET,
       payload: item
@@ -19,6 +20,7 @@ function Cart() {
   };
 
   const decrease = (id) => {
+    console.log('🔽 DECREASE button clicked. Item ID:', id);
     dispatch({
       type: type.REMOVE_FROM_BASKET,
       payload: id
@@ -48,9 +50,9 @@ function Cart() {
                       flex={true}
                     />
                     <div className={classes.cart_buttons}>
-                      <button onClick={() => increment(item)} className={classes.increment_btn}>+</button>
+                      <button type="button" onClick={() => increment(item)} className={classes.increment_btn}><IoIosArrowUp/></button>
                       <span className={classes.amount}>{item.amount || 1}</span>
-                      <button onClick={() => decrease(itemId)} className={classes.decrease_btn}>-</button>
+                      <button type="button" onClick={() => decrease(itemId)} className={classes.decrease_btn}><IoIosArrowDown/></button>
                     </div>
                   </section>
                 );
@@ -87,7 +89,7 @@ function Cart() {
             <input type="checkbox" />
             <small className={classes.this_order_contains}>this order contains gift</small>
             <span>
-              <Link to="/checkout" className={classes.checkout__button}>Proceed to Checkout</Link>
+              <Link to="/payment" className={classes.checkout__button}>Proceed to Checkout</Link>
             </span>
           </div>
         )}

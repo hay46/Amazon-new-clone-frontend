@@ -11,7 +11,6 @@ export const reducer = (state = initialState, action) => {
       const item = action.payload;
       
       if (!item) {
-        console.error('ADD_TO_BASKET: item is undefined');
         return state;
       }
 
@@ -25,11 +24,13 @@ export const reducer = (state = initialState, action) => {
       });
 
       if (!existingItem) {
+        console.log('✅ Adding NEW item to basket');
         return {
           ...state,
           basket: [...state.basket, { ...item, amount: 1 }],
         };
       } else {
+        console.log('➕ Incrementing EXISTING item. Current amount:', existingItem.amount);
         const updatedBasket = state.basket.map((basketItem) => {
           const basketKey = basketItem.id || basketItem.ASIN;
           return basketKey === itemKey 
