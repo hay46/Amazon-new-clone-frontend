@@ -77,14 +77,14 @@ const {state}=useContext(DataContext);
             </select>
           </div>
 
-          <a href="/login" className={classes.header__link}>
+          <Link to="/Auth" className={classes.header__link}>
             <div className={classes.header__option}>
               <p className={classes.header__optionLineOne}>Hello, Sign In</p>
               <span className={classes.header__optionLineTwo}>
                 Account & Lists
               </span>
             </div>
-          </a>
+          </Link>
 
           <a href="/orders" className={classes.header__link}>
             <div className={classes.header__option}>

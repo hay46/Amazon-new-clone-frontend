@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Landing from './pages/landing/Landing'
-import Signup from './pages/Auth/Signup'
+import Auth from './pages/Auth/Auth'
 import Cart from './pages/cart/Cart'
 import Orders from './pages/order/Orders'
 import Payment from './pages/payment/Payment'
@@ -14,7 +14,7 @@ function Routers() {
     <div>
       <Routes>
         <Route path='/' element={<Landing />} />
-        <Route path='/signup' element={<Signup />} />
+        <Route path='/Auth' element={<Auth />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/orders' element={<Orders />} />
         <Route path='/payment' element={<Payment />} />
