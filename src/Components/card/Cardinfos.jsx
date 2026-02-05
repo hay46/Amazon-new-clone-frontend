@@ -3,11 +3,11 @@ import './CardInfos.css'
 import {CardinformationData} from './CardinformationData.js'
 import {Link} from 'react-router-dom'
 import { DataContext } from '../dataprovider/Dataprovider.jsx'
-import {type} from '../../utilitiy/Action.js'
+import {Type} from '../../utilitiy/Action.js'
 function CardInfos ({data}) {
   const {dispatch } = useContext(DataContext);
   const ADD_TO_CART = () => {
-    dispatch({ type: type.ADD_TO_BASKET, payload: data });
+    dispatch({ Type: Type.ADD_TO_BASKET, payload: data });
   };
 
 

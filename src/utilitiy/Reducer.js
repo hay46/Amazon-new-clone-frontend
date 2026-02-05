@@ -1,102 +1,57 @@
-import { type} from "./Action";
+import {Type} from './Action'
 
 export const initialState = {
   basket: [],
-  user:null,
+  user: null,
 };
 
 export const reducer = (state = initialState, action) => {
+  // 'action.type' በትንሽ ፊደል መሆኑን እርግጠኛ ሁን
   switch (action.type) {
-    case type.ADD_TO_BASKET: {
-      // Use action.payload and handle both id and ASIN
+    case Type.ADD_TO_BASKET: {
       const item = action.payload;
-      
-      if (!item) {
-        return state;
-      }
+      if (!item) return state;
 
-      // Get unique identifier (support both id and ASIN)
       const itemKey = item.id || item.ASIN;
-      
-      // check if the item exists
-      const existingItem = state.basket.find((basketItem) => {
-        const basketKey = basketItem.id || basketItem.ASIN;
-        return basketKey === itemKey;
-      });
+      const existingItem = state.basket.find((basketItem) => (basketItem.id || basketItem.ASIN) === itemKey);
 
       if (!existingItem) {
-        console.log('✅ Adding NEW item to basket');
         return {
           ...state,
           basket: [...state.basket, { ...item, amount: 1 }],
         };
       } else {
-        console.log('➕ Incrementing EXISTING item. Current amount:', existingItem.amount);
-        const updatedBasket = state.basket.map((basketItem) => {
-          const basketKey = basketItem.id || basketItem.ASIN;
-          return basketKey === itemKey 
-            ? { ...basketItem, amount: (basketItem.amount || 0) + 1 } 
-            : basketItem;
-        });
-
-        return {
-          ...state,
-          basket: updatedBasket,
-        };
+        const updatedBasket = state.basket.map((basketItem) =>
+          (basketItem.id || basketItem.ASIN) === itemKey
+            ? { ...basketItem, amount: (basketItem.amount || 0) + 1 }
+            : basketItem
+        );
+        return { ...state, basket: updatedBasket };
       }
     }
 
-    case type.REMOVE_FROM_BASKET: {
+    case Type.REMOVE_FROM_BASKET: {
       const itemId = action.payload;
-      
-      if (!itemId) {
-        console.error('REMOVE_FROM_BASKET: id is undefined');
-        return state;
-      }
+      const existingItem = state.basket.find((item) => (item.id || item.ASIN) === itemId);
 
-      // Find the item in basket
-      const existingItem = state.basket.find((basketItem) => {
-        const basketKey = basketItem.id || basketItem.ASIN;
-        return basketKey === itemId;
-      });
+      if (!existingItem) return state;
 
-      if (!existingItem) {
-        return state; // Item not found
-      }
-
-      // If amount > 1, decrease it. If amount === 1, remove item
       if (existingItem.amount > 1) {
-        const updatedBasket = state.basket.map((basketItem) => {
-          const basketKey = basketItem.id || basketItem.ASIN;
-          return basketKey === itemId 
-            ? { ...basketItem, amount: basketItem.amount - 1 } 
-            : basketItem;
-        });
-
-        return {
-          ...state,
-          basket: updatedBasket,
-        };
+        const updatedBasket = state.basket.map((item) =>
+          (item.id || item.ASIN) === itemId ? { ...item, amount: item.amount - 1 } : item
+        );
+        return { ...state, basket: updatedBasket };
       } else {
-        // Remove item from basket
-        const updatedBasket = state.basket.filter((basketItem) => {
-          const basketKey = basketItem.id || basketItem.ASIN;
-          return basketKey !== itemId;
-        });
-
-        return {
-          ...state,
-          basket: updatedBasket,
-        };
+        const updatedBasket = state.basket.filter((item) => (item.id || item.ASIN) !== itemId);
+        return { ...state, basket: updatedBasket };
       }
     }
-  
-    case type.SET_USER:
-      return{
+
+    case Type.SET_USER:
+      return {
         ...state,
-      user:action.user
-      }
-    
+        user: action.user,
+      };
 
     default:
       return state;

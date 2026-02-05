@@ -4,7 +4,7 @@ import { DataContext } from '../../Components/dataprovider/Dataprovider';
 import Layout from '../../Components/layout/Layout';
 import ProductCard from '../../Components/product/ProductCard';
 import { Link } from 'react-router-dom';
-import { type } from '../../utilitiy/Action';
+import { Type } from '../../utilitiy/Action';
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 function Cart() {
   // stateን መጀመሪያ ከcontext እናውጣ
@@ -14,7 +14,7 @@ function Cart() {
   const increment = (item) => {
     
     dispatch({
-      type: type.ADD_TO_BASKET,
+      Type: Type.ADD_TO_BASKET,
       payload: item
     });
   };
@@ -86,7 +86,7 @@ function Cart() {
                 return <p className={classes.subtotal}><strong>{formatted}</strong></p>;
               })()
             }
-            <input type="checkbox" />
+            <input Type="checkbox" />
             <small className={classes.this_order_contains}>this order contains gift</small>
             <span>
               <Link to="/payment" className={classes.checkout__button}>Proceed to Checkout</Link>
