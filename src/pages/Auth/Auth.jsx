@@ -2,86 +2,86 @@ import React, { useState, useContext } from 'react';
 import classes from './signup.module.css';
 import { Link } from 'react-router-dom';
 import Amazon_logo from '../../assets/10001.jpeg';
-import {auth} from '../../utilitiy/Firebase'
+import { auth } from '../../utilitiy/Firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import {DataContext} from '../../Components/dataprovider/Dataprovider'
+import { DataContext } from '../../Components/dataprovider/Dataprovider';
+
 function Auth() {
-   const [Email, setEmail ] = useState("")
-   const [password, setpassword]= useState("")
-   //const [Error,setError]=useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(""); // ስህተቶችን ለተጠቃሚው ለማሳየት
 
-const [{user},dispatch] = useContext(DataContext);
+  const [{ user }, dispatch] = useContext(DataContext);
 
-// console.log(user)
-
-   const authHandler=async(e)=>{
+  const authHandler = async (e) => {
     e.preventDefault();
-if(e.target.name=="sign in"){
-signInWithEmailAndPassword(auth,Email,password).then((userInfo)=>{
+    
+    // የትኛው በተን እንደተጫነ ለማወቅ (ስሙን እናጽዳው - trim)
+    const action = e.target.name.trim();
 
-dispatch({
-  type: "SET_USER",
-  user: userInfo.user
-});
-}).catch((err)=>{
-  console.log(err)
-})
+    if (action === "sign in") {
+      // Sign In Logic
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userInfo) => {
+          dispatch({
+            type: "SET_USER", // እዚህ ጋር String አድርገው
+            user: userInfo.user
+          });
+        })
+        .catch((err) => {
+          setError(err.message);
+          console.log(err.message);
+        });
 
+    } else {
+      // Sign Up (Create Account) Logic
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userInfo) => {
+          dispatch({
+            type: "SET_USER", // እዚህ ጋር String አድርገው
+            user: userInfo.user
+          });
+        })
+        .catch((err) => {
+          setError(err.message);
+          console.log(err.message);
+        });
+    }
+  };
 
-}else{
-createUserWithEmailAndPassword(auth,Email,password).then((userInfo)=>{
-
-dispatch({
-  type: "SET_USER",
-  user: userInfo.user
-});
-}).catch((err)=>{
-  console.log(err)
-})
-}
-
-
-   };
-   
   return (
     <section className={classes.login}>
-      {/* Amazon Logo */}
       <Link to="/">
-        <img 
-          className={classes.login__logo} 
-          src={Amazon_logo} 
-          alt="Amazon logo" 
-        />
+        <img className={classes.login__logo} src={Amazon_logo} alt="Amazon logo" />
       </Link>
 
-      {/* Sign-in Container */}
       <div className={classes.login__container}>
         <h1>Sign-in</h1>
+        {/* ስህተት ካለ እዚህ ጋር ይወጣል */}
+        {error && <small style={{ color: "red", paddingBottom: "10px", display: "block" }}>{error}</small>}
         
         <form>
-         <label htmlFor="Email">Email:</label>
+          <label htmlFor="email">Email:</label>
           <input 
-          type="email" 
-          id="Email" 
-          name="Email" 
-          value={Email}
-          onChange={(e)=>setEmail(e.target.value)}
+            type="email" 
+            id="email" 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
 
-           <label htmlFor="password">password:</label>
+          <label htmlFor="password">Password:</label>
           <input 
-          type="password"
-           id="password" 
-           name="password" 
+            type="password" 
+            id="password" 
             value={password}
-             onChange={(e)=>setpassword(e.target.value)}
-           />
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
           <button 
-          type="submit" 
-          onClick={authHandler}
-          name="signin"
-          className={classes.login__signInButton}>
+            type="submit" 
+            onClick={authHandler}
+            name="sign in"
+            className={classes.login__signInButton}>
             Sign In
           </button>
         </form>
@@ -92,10 +92,10 @@ dispatch({
         </p>
 
         <button 
-        type="submit"
-        onClick={authHandler}
-        name=" signup"
-        className={classes.login__registerButton}>
+          type="submit"
+          onClick={authHandler}
+          name="sign up"
+          className={classes.login__registerButton}>
           Create your Amazon Account
         </button>
       </div>
