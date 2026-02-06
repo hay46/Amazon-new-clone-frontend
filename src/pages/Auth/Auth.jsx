@@ -31,6 +31,7 @@ setLoading({...loading, signIn: true});
             type: Type.SET_USER,
             user: userInfo.user
           });
+          
           navigate("/"); // ወደ Home ይመልሰዋል
         })
         .catch((err) => {
@@ -80,7 +81,7 @@ setLoading({...loading, signIn: true});
           >
             {
             loading.signIn? 
-            <ClipLoader Color="#000" size = {15}/>:"Login"
+            <ClipLoader color="#000" size = {15}/>:"Login"
             }
            </button>
         </form>
@@ -93,7 +94,7 @@ setLoading({...loading, signIn: true});
         className={classes.login__registerButton}
         >
           {
-            loading.signUP? <ClipLoader  Color="#000" size = {15}/> : "  Create your Amazon Account"}
+            loading.signUp? <ClipLoader  color="#000" size = {15}/> : "  Create your Amazon Account"}
         </button>
         {error &&<small style={{paddingTop: "5px",color:"red"}}>{error}</small>}
       </div>

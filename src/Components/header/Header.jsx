@@ -6,6 +6,7 @@ import { BiCart } from "react-icons/bi";
 import LowerHeader from "./LowerHeader";
 import { DataContext } from "../dataprovider/Dataprovider"; // Ensure path is correct
 import { Link } from "react-router-dom";
+import {auth} from "../../utilitiy/Firebase"
 
 const Header = () => {
   // Use useContext to access your global state
@@ -77,13 +78,24 @@ const Header = () => {
               </select>
             </div>
 
-            <Link to={!user &&"/Auth"} className={classes.header__link}>
+            <Link to={!user&&"/Auth"} className={classes.header__link}>
               <div className={classes.header__option}>
                 <p className={classes.header__optionLineOne}>{/* Optional chaining ?. ስህተትን ይከላከላል */}
-              Hello, {user ? user.email.split('@')[0] : "SignIn"}</p>
-                <span className={classes.header__optionLineTwo}>
+                   </p>
+                {user ?
+                <>
+                   Hello, ({user?.email?.split('@')[0]})
+                  <span onClick={()=>auth.signOut()}
+                    style={{ cursor: "pointer", fontWeight: "bold", display: "block" }}>Log out</span>
+                </> 
+            :(
+              <>
+              <p>Log In</p>
+               <span className={classes.header__optionLineTwo}>
                   Account & Lists
                 </span>
+                </>
+              )}
               </div>
             </Link>
 
