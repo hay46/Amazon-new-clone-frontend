@@ -1,51 +1,37 @@
-import {Type} from './Action'
+import { Type } from "./Action";
 
 export const initialState = {
   basket: [],
   user: null,
 };
 
-export const reducer = (state = initialState, action) => {
-  // 'action.type' በትንሽ ፊደል መሆኑን እርግጠኛ ሁን
-  switch (action.type) {
-    case Type.ADD_TO_BASKET: {
-      const item = action.payload;
-      if (!item) return state;
-
-      const itemKey = item.id || item.ASIN;
-      const existingItem = state.basket.find((basketItem) => (basketItem.id || basketItem.ASIN) === itemKey);
-
+export const reducer = (state, action) => {
+  switch (action.type) { // ሁልጊዜ በትንሽ 'type'
+    case Type.ADD_TO_BASKET:
+      const existingItem = state.basket.find((item) => item.id === action.payload.id);
       if (!existingItem) {
         return {
           ...state,
-          basket: [...state.basket, { ...item, amount: 1 }],
+          basket: [...state.basket, { ...action.payload, amount: 1 }],
         };
       } else {
-        const updatedBasket = state.basket.map((basketItem) =>
-          (basketItem.id || basketItem.ASIN) === itemKey
-            ? { ...basketItem, amount: (basketItem.amount || 0) + 1 }
-            : basketItem
-        );
-        return { ...state, basket: updatedBasket };
-      }
-    }
-
-    case Type.REMOVE_FROM_BASKET: {
-      const itemId = action.payload;
-      const existingItem = state.basket.find((item) => (item.id || item.ASIN) === itemId);
-
-      if (!existingItem) return state;
-
-      if (existingItem.amount > 1) {
         const updatedBasket = state.basket.map((item) =>
-          (item.id || item.ASIN) === itemId ? { ...item, amount: item.amount - 1 } : item
+          item.id === action.payload.id ? { ...item, amount: item.amount + 1 } : item
         );
         return { ...state, basket: updatedBasket };
-      } else {
-        const updatedBasket = state.basket.filter((item) => (item.id || item.ASIN) !== itemId);
-        return { ...state, basket: updatedBasket };
       }
-    }
+
+    case Type.REMOVE_FROM_BASKET:
+      const index = state.basket.findIndex((item) => item.id === action.payload);
+      let newBasket = [...state.basket];
+      if (index >= 0) {
+        if (newBasket[index].amount > 1) {
+          newBasket[index] = { ...newBasket[index], amount: newBasket[index].amount - 1 };
+        } else {
+          newBasket.splice(index, 1);
+        }
+      }
+      return { ...state, basket: newBasket };
 
     case Type.SET_USER:
       return {

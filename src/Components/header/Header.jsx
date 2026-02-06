@@ -4,114 +4,112 @@ import { BsSearch } from "react-icons/bs";
 import { SlLocationPin } from "react-icons/sl";
 import { BiCart } from "react-icons/bi";
 import LowerHeader from "./LowerHeader";
-import { DataContext } from "../dataprovider/Dataprovider";
+import { DataContext } from "../dataprovider/Dataprovider"; // Ensure path is correct
 import { Link } from "react-router-dom";
-const Header =() =>{
-const {state}=useContext(DataContext);
 
-  const {basket}=state;
-  console.log("basket in header",basket);
+const Header = () => {
+  // Use useContext to access your global state
+ const [{ basket, user }, dispatch] = useContext(DataContext);
+
   return (
     <div>
-    <section className={classes.header}>
-      {/* Top Navigation */}
-      <section className={classes.header__main}>
-        {/* Logo and Address */}
-        <div className={classes.header__left}>
-          <a href="/" className={classes.header__logoLink}>
-            <img
-              className={classes.header__logo}
-              src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
-              alt="amazon-logo"
-            />
-          </a>
-          <a href="/" className={classes.header__location}>
-            <SlLocationPin className={classes.header__locationIcon} />
-            <div className={classes.header__locationText}>
-              <p>Deliver to</p>
-              <span>Ethiopia</span>
-            </div>
-          </a>
-        </div>
-
-        {/* Search Bar */}
-        <div className={classes.header__search}>
-          <select className={classes.header__searchSelect}>
-            <option value="all">All</option>
-            <option value="art">Art</option>
-            <option value="books">Books</option>
-            <option value="clothing">Clothing</option>
-            <option value="computers">Computers</option>
-            <option value="fashion">Fashion</option>
-            <option value="electronics">Electronics</option>
-            <option value="home">Home</option>
-            <option value="toys">Toys</option>
-            <option value="sports">Sports</option>
-          </select>
-          <input
-            className={classes.header__searchInput}
-            type="text"
-            placeholder="Search Amazon.com"
-          />
-          <div className={classes.header__searchIconContainer}>
-            <BsSearch className={classes.header__searchIcon} />
+      <section className={classes.header}>
+        {/* Top Navigation */}
+        <section className={classes.header__main}>
+          {/* Logo and Address */}
+          <div className={classes.header__left}>
+            <Link to="/" className={classes.header__logoLink}>
+              <img
+                className={classes.header__logo}
+                src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
+                alt="amazon-logo"
+              />
+            </Link>
+            <Link to="/" className={classes.header__location}>
+              <SlLocationPin className={classes.header__locationIcon} />
+              <div className={classes.header__locationText}>
+                <p>Deliver to</p>
+                <span>Ethiopia</span>
+              </div>
+            </Link>
           </div>
-        </div>
 
-        {/* Right Side Links */}
-        <div className={classes.header__right}>
-          <div className={classes.header__language}>
-            <img
-              src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
-              alt="flag"
-              className={classes.header__flag}
-            />
-            <select className={classes.header__langSelect}>
-              <option value="en">EN</option>
-              <option value="am">Am</option>
-              <option value="fr">FR</option>
-              <option value="de">DE</option>
-              <option value="es">ES</option>
-              <option value="it">IT</option>
-              <option value="zh">ZH</option>
+          {/* Search Bar */}
+          <div className={classes.header__search}>
+            <select className={classes.header__searchSelect}>
+              <option value="all">All</option>
+              <option value="art">Art</option>
+              <option value="books">Books</option>
+              <option value="clothing">Clothing</option>
+              <option value="computers">Computers</option>
+              <option value="fashion">Fashion</option>
+              <option value="electronics">Electronics</option>
+              <option value="home">Home</option>
+              <option value="toys">Toys</option>
+              <option value="sports">Sports</option>
             </select>
+            <input
+              className={classes.header__searchInput}
+              type="text"
+              placeholder="Search Amazon.com"
+            />
+            <div className={classes.header__searchIconContainer}>
+              <BsSearch className={classes.header__searchIcon} />
+            </div>
           </div>
 
-          <Link to="/Auth" className={classes.header__link}>
-            <div className={classes.header__option}>
-              <p className={classes.header__optionLineOne}>Hello, Sign In</p>
-              <span className={classes.header__optionLineTwo}>
-                Account & Lists
-              </span>
+          {/* Right Side Links */}
+          <div className={classes.header__right}>
+            <div className={classes.header__language}>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
+                alt="flag"
+                className={classes.header__flag}
+              />
+              <select className={classes.header__langSelect}>
+                <option value="en">EN</option>
+                <option value="am">Am</option>
+                <option value="fr">FR</option>
+                <option value="de">DE</option>
+                <option value="es">ES</option>
+                <option value="it">IT</option>
+                <option value="zh">ZH</option>
+              </select>
             </div>
-          </Link>
 
-          <a href="/orders" className={classes.header__link}>
-            <div className={classes.header__option}>
-              <p className={classes.header__optionLineOne}>Returns</p>
-              <span className={classes.header__optionLineTwo}>& Orders</span>
-            </div>
-          </a>
+            <Link to={!user &&"/Auth"} className={classes.header__link}>
+              <div className={classes.header__option}>
+                <p className={classes.header__optionLineOne}>{/* Optional chaining ?. ስህተትን ይከላከላል */}
+              Hello, {user ? user.email.split('@')[0] : "SignIn"}</p>
+                <span className={classes.header__optionLineTwo}>
+                  Account & Lists
+                </span>
+              </div>
+            </Link>
 
-          <Link to="/Cart" className={classes.header__link}>
-            <div className={classes.header__optionBasket}>
-              <BiCart className={classes.header__basketIcon} />
-              <span
-                className={`${classes.header__optionLineTwo} ${classes.header__basketCount}`}
-              >
+            <Link to="/orders" className={classes.header__link}>
+              <div className={classes.header__option}>
+                <p className={classes.header__optionLineOne}>Returns</p>
+                <span className={classes.header__optionLineTwo}>& Orders</span>
+              </div>
+            </Link>
 
-              {basket.length}
-              </span>
-            </div>
-          </Link>
-        </div>
+            <Link to="/Cart" className={classes.header__link}>
+              <div className={classes.header__optionBasket}>
+                <BiCart className={classes.header__basketIcon} />
+                <span
+                  className={`${classes.header__optionLineTwo} ${classes.header__basketCount}`}
+                >
+                  {basket?.length}
+                </span>
+              </div>
+            </Link>
+          </div>
+        </section>
       </section>
-      {/* Lower Navigation */}
-      
-    </section>
-    <LowerHeader />
+      <LowerHeader />
     </div>
   );
-}
+};
 
 export default Header;

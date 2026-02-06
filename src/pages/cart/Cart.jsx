@@ -8,13 +8,14 @@ import { Type } from '../../utilitiy/Action';
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 function Cart() {
   // stateን መጀመሪያ ከcontext እናውጣ
-  const { state, dispatch } = useContext(DataContext);
-  const { basket } = state;
+  
+  const [ state, dispatch ] = useContext(DataContext);
+  const  basket  = state?.basket || [];
 
   const increment = (item) => {
     
     dispatch({
-      Type: Type.ADD_TO_BASKET,
+      type: Type.ADD_TO_BASKET,
       payload: item
     });
   };
@@ -22,7 +23,7 @@ function Cart() {
   const decrease = (id) => {
     console.log('🔽 DECREASE button clicked. Item ID:', id);
     dispatch({
-      type: type.REMOVE_FROM_BASKET,
+      type: Type.REMOVE_FROM_BASKET,
       payload: id
     });
   };
@@ -86,7 +87,7 @@ function Cart() {
                 return <p className={classes.subtotal}><strong>{formatted}</strong></p>;
               })()
             }
-            <input Type="checkbox" />
+            <input type="checkbox" />
             <small className={classes.this_order_contains}>this order contains gift</small>
             <span>
               <Link to="/payment" className={classes.checkout__button}>Proceed to Checkout</Link>

@@ -8,3 +8,12 @@
    --primary--color:fff
    --primary--shade:fff3i3
 }
+@font-face {
+  font-family: 'slick';
+  font-weight: normal;
+  font-style: normal;
+  /* This tells Chrome to show the fallback immediately and swap when ready */
+  font-display: swap; 
+  src: url('./node_modules/slick-carousel/slick/fonts/slick.eot');
+  /* ... repeat for other formats if you've copied the file ... */
+}

@@ -5,9 +5,9 @@ import {Link} from 'react-router-dom'
 import { DataContext } from '../dataprovider/Dataprovider.jsx'
 import {Type} from '../../utilitiy/Action.js'
 function CardInfos ({data}) {
-  const {dispatch } = useContext(DataContext);
+  const [state,dispatch ] = useContext(DataContext);
   const ADD_TO_CART = () => {
-    dispatch({ Type: Type.ADD_TO_BASKET, payload: data });
+    dispatch({ type: Type.ADD_TO_BASKET, payload: data });
   };
 
 
