@@ -1,12 +1,21 @@
 import { Type } from "./Action";
 
+// 1. Selector - ይህንን መጨመርህን አረጋግጥ
+export const getBasketTotal = (basket) =>
+  basket?.reduce((amount, item) => {
+    const price = typeof item.price === 'string' 
+      ? parseFloat(item.price.replace(/[^0-9.-]+/g, "")) 
+      : item.price;
+    return (price * item.amount) + amount;
+  }, 0);
+
 export const initialState = {
   basket: [],
   user: null,
 };
 
 export const reducer = (state, action) => {
-  switch (action.type) { // ሁልጊዜ በትንሽ 'type'
+  switch (action.type) {
     case Type.ADD_TO_BASKET:
       const existingItem = state.basket.find((item) => item.id === action.payload.id);
       if (!existingItem) {
@@ -39,12 +48,12 @@ export const reducer = (state, action) => {
         user: action.user,
       };
 
-case Type.EMPTY_BASKET:
-  return {
-    ...state,
-    basket: [],
-  };
-  
+    case Type.EMPTY_BASKET:
+      return {
+        ...state,
+        basket: [],
+      };
+
     default:
       return state;
   }

@@ -1,10 +1,10 @@
-import React, { useState,useLocation} from 'react';
+import React, { useState} from 'react';
 import classes from './signup.module.css';
 import Amazon_logo from '../../assets/10001.jpeg';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate,useLocation} from 'react-router-dom';
 import { auth } from '../../utilitiy/Firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import { useStateValue } from '../dataprovider/Dataprovider';
+import { useStateValue } from '../../Components/dataprovider/Dataprovider'
 import {Type} from '../../utilitiy/Action'
 import {ClipLoader} from "react-spinners"
 function Auth() {

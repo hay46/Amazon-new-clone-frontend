@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './cart.module.css';
-import { useStateValue } from '../dataprovider/Dataprovider';
+import { useStateValue } from '../../Components/dataprovider/Dataprovider'
 import Layout from '../../Components/layout/Layout';
 import ProductCard from '../../Components/product/ProductCard';
 import { Link } from 'react-router-dom';
@@ -51,9 +51,9 @@ function Cart() {
                       flex={true}
                     />
                     <div className={classes.cart_buttons}>
-                      <button type="button" onClick={() => increment(item)} className={classes.increment_btn}><IoIosArrowUp/></button>
+                      <button type="button" onClick={() => increment(item)} className={classes.increment_btn}><IoIosArrowUp size={20}/></button>
                       <span className={classes.amount}>{item.amount || 1}</span>
-                      <button type="button" onClick={() => decrease(itemId)} className={classes.decrease_btn}><IoIosArrowDown/></button>
+                      <button type="button" onClick={() => decrease(item.id)} className={classes.decrease_btn}><IoIosArrowDown size={20}/></button>
                     </div>
                   </section>
                 );

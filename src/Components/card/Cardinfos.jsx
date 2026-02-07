@@ -2,7 +2,7 @@ import React from 'react'
 import './CardInfos.css'
 import {CardinformationData} from './CardinformationData.js'
 import {Link} from 'react-router-dom'
-import { useStateValue } from '../dataprovider/Dataprovider';
+import { useStateValue } from '../dataprovider/Dataprovider.jsx'
 import {Type} from '../../utilitiy/Action.js'
 function CardInfos ({data}) {
   const [{ basket, user }, dispatch] = useStateValue();

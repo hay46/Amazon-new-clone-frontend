@@ -30,7 +30,7 @@
   align-items: center;
   border-bottom: 1px solid #ddd;
   padding: 20px 0;
-  gap: 15px;
+  
 }
 
 /* Quantity Control Buttons */
@@ -38,9 +38,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 5px;
-  min-width: 60px;
+}
+.cart_buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart_buttons button:hover {
+  color: #f0c14b;
 }
 
 .increment_btn, 

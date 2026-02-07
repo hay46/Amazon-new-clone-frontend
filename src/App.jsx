@@ -1,7 +1,7 @@
 import React, {  useEffect } from 'react';
 import './App.css';
 import Routers from './Routers.jsx';
-import { useStateValue } from '../dataprovider/Dataprovider';
+import { useStateValue } from './Components/dataprovider/Dataprovider.jsx'
 import { auth } from "./utilitiy/Firebase.js"; 
 import { Type } from "./utilitiy/Action.js";
 
