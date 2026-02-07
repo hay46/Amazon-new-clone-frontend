@@ -1,0 +1,22 @@
+.orderCard {
+    padding: 40px;
+    margin: 20px 0;
+    border: 1px solid lightgray;
+    background-color: white;
+    position: relative;
+}
+
+.orderCard__id {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+}
+
+.orderCard__total {
+    font-weight: 500;
+    text-align: right;
+}
+
+.orderCard > p {
+    margin-bottom: 20px;
+}
