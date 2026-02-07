@@ -1,17 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import classes from "./Header.module.css";
 import { BsSearch } from "react-icons/bs";
 import { SlLocationPin } from "react-icons/sl";
 import { BiCart } from "react-icons/bi";
 import LowerHeader from "./LowerHeader";
-import { DataContext } from "../dataprovider/Dataprovider"; // Ensure path is correct
+import { useStateValue } from '../dataprovider/Dataprovider'; // Ensure path is correct
 import { Link } from "react-router-dom";
 import {auth} from "../../utilitiy/Firebase"
 
 const Header = () => {
   // Use useContext to access your global state
- const [{ basket, user }, dispatch] = useContext(DataContext);
-
+const [{ basket, user }, dispatch] = useStateValue();
   return (
     <div>
       <section className={classes.header}>

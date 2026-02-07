@@ -1,10 +1,10 @@
-import React, { useState, useContext} from 'react';
+import React, { useState,useLocation} from 'react';
 import classes from './signup.module.css';
 import Amazon_logo from '../../assets/10001.jpeg';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../../utilitiy/Firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import { DataContext } from '../../Components/dataprovider/Dataprovider';
+import { useStateValue } from '../dataprovider/Dataprovider';
 import {Type} from '../../utilitiy/Action'
 import {ClipLoader} from "react-spinners"
 function Auth() {
@@ -17,8 +17,9 @@ function Auth() {
   });
   
   const navigate = useNavigate();
+  const { state } = useLocation();
   // አሁን መረጃው በትክክል ይገባል []
-  const [{ user }, dispatch] = useContext(DataContext);
+  const [{ basket, user }, dispatch] = useStateValue();
 
   const authHandler = async(e) => {
     e.preventDefault();
@@ -32,7 +33,7 @@ setLoading({...loading, signIn: true});
             user: userInfo.user
           });
           
-          navigate("/"); // ወደ Home ይመልሰዋል
+          navigate(state?.redirect || "/"); // ወደ Home ይመልሰዋል
         })
         .catch((err) => {
           setError(err.message);
@@ -48,7 +49,7 @@ setLoading({...loading, signIn: true});
             user: userInfo.user
           });
           setLoading({...loading, signUp:false});
-          navigate("/");
+         navigate(state?.redirect || "/");
         })
         .catch((err) => {
           setError(err.message);

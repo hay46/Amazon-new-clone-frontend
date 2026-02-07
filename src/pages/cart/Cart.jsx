@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classes from './cart.module.css';
-import { DataContext } from '../../Components/dataprovider/Dataprovider';
+import { useStateValue } from '../dataprovider/Dataprovider';
 import Layout from '../../Components/layout/Layout';
 import ProductCard from '../../Components/product/ProductCard';
 import { Link } from 'react-router-dom';
@@ -9,8 +9,8 @@ import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 function Cart() {
   // stateን መጀመሪያ ከcontext እናውጣ
   
-  const [ state, dispatch ] = useContext(DataContext);
-  const  basket  = state?.basket || [];
+  const [{ basket, user }, dispatch] = useStateValue();
+ // const  basket  = state?.basket || [];
 
   const increment = (item) => {
     

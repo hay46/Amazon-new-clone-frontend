@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import './App.css';
 import Routers from './Routers.jsx';
-import { DataContext } from './Components/dataprovider/Dataprovider.jsx';
+import { useStateValue } from '../dataprovider/Dataprovider';
 import { auth } from "./utilitiy/Firebase.js"; 
 import { Type } from "./utilitiy/Action.js";
 
 function App() {
-  const [{ user }, dispatch] = useContext(DataContext);
+const [{ basket, user }, dispatch] = useStateValue();
 
   useEffect(() => {
     // Firebase ተጠቃሚው መግባቱን ወይም መውጣቱን በራሱ የሚከታተልበት መንገድ
