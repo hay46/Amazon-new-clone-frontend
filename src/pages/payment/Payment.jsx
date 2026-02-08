@@ -9,6 +9,7 @@ import axios from '../../utilitiy/axios';
 import { useNavigate } from 'react-router-dom';
 import { Type } from '../../utilitiy/Action';
 import Layout from '../../Components/layout/Layout';
+import { ClipLoader } from 'react-spinners';
 // Firestore ጥቅሶች
 import { db } from "../../utilitiy/Firebase";
 import { doc, setDoc } from "firebase/firestore";
@@ -35,7 +36,7 @@ function Payment() {
             method: 'post',
             url: `/payment/create?total=${total}`, // Backend ላይ ካለው ጋር አንድ አይነት መሆኑን አረጋግጪ
           });
-          
+          // console.log(response.data)
           if (response.data?.clientSecret) {
             setClientSecret(response.data.clientSecret);
           }
@@ -64,17 +65,19 @@ function Payment() {
     return;
   }
   
-  setProcessing(true);
+ 
   
 
   try {
+     setProcessing(true);
     // 1. የ Stripe ክፍያ ማረጋገጫ መጠየቅ
     const result = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: elements.getElement(CardElement),
       },
     });
-
+// console.log(result)
+ setProcessing(flse);
     // ውጤቱን ለይተን እንፈትሽ (Destructuring result)
     const { paymentIntent, error: stripeError } = result;
 
@@ -155,7 +158,9 @@ function Payment() {
                     </span>
                   </div>
                   <button type="submit" disabled={processing || disabled || succeeded || !clientSecret}>
-                    {processing ? <div className={classes.loading}>Processing...</div> : "Buy Now"}
+                    {processing ? (<div className={classes.loading}>
+                      <ClipLoader color="gray" size={15}/>
+                      <p>please wait ...</p></div>) : "Buy Now"}
                   </button>
                 </div>
               </form>
