@@ -56,42 +56,30 @@ function Payment() {
     setError(e.error ? e.error.message : "");
   };
 
- const handleSubmit = async (e) => {
+ // ... (ሌሎች import-ዎች እንዳሉ ሆነው)
+const handleSubmit = async (e) => {
   e.preventDefault();
-  
   if (!user) {
     setError("Please login to complete your payment");
-    setProcessing(false);
     return;
   }
-  
- 
-  
 
   try {
-     setProcessing(true);
-    // 1. የ Stripe ክፍያ ማረጋገጫ መጠየቅ
+    setProcessing(true); // እዚህ ጋር 'false' ሳይሆን 'true' መሆኑን አረጋግጥ
     const result = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement(CardElement),
-      },
+      payment_method: { card: elements.getElement(CardElement) },
     });
-// console.log(result)
- setProcessing(false);
-    // ውጤቱን ለይተን እንፈትሽ (Destructuring result)
+
     const { paymentIntent, error: stripeError } = result;
 
     if (stripeError) {
-      // የ Stripe ስህተት ካለ (ለምሳሌ የካርድ ቁጥር ስህተት)
       setError(`Payment Failed: ${stripeError.message}`);
       setProcessing(false);
       return;
     }
 
-    // 2. ክፍያው ከተሳካ (paymentIntent ካለ ብቻ) ዳታቤዝ ውስጥ እናስቀምጣለን
     if (paymentIntent) {
       const orderRef = doc(db, "users", user?.uid, "orders", paymentIntent.id);
-      
       await setDoc(orderRef, {
         basket: basket,
         amount: paymentIntent.amount,
@@ -99,20 +87,15 @@ function Payment() {
       });
 
       setSucceeded(true);
-      setError(null);
-      setProcessing(false);
-
       dispatch({ type: Type.EMPTY_BASKET });
+      setProcessing(false);
       navigate('/orders', { replace: true });
     }
-
   } catch (err) {
-    // ሌላ አጠቃላይ ስህተት ካለ
     setError(`Error: ${err.message}`);
     setProcessing(false);
   }
 };
-
   return (
     <Layout>
       <div className={classes.payment}>
