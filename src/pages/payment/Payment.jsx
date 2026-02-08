@@ -77,7 +77,7 @@ function Payment() {
       },
     });
 // console.log(result)
- setProcessing(flse);
+ setProcessing(false);
     // ውጤቱን ለይተን እንፈትሽ (Destructuring result)
     const { paymentIntent, error: stripeError } = result;
 

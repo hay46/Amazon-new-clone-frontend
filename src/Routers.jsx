@@ -1,19 +1,13 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Landing from './pages/landing/Landing'
-import Auth from './pages/Auth/Auth'
-import Cart from './pages/cart/Cart'
-import Orders from './pages/order/Orders'
-import Payment from './pages/payment/Payment'
-import Result from './pages/Result/Result'
-import ProdactDitail from './pages/ProductDtail/ProductDital'
-
-// 1. የ Stripe ላይብረሪዎችን እዚህ Import አድርግ
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
-
-// 2. የራስህን Stripe Public Key (pk_test...) እዚህ አስገባ
-const stripePromise = loadStripe('pk_test_51SxpkKQlJYiEoQVCcvvx3uwdAXF9mHBHQJFXYV2YmsMEa26Lob3JsxSMY1fCKwq84rmsIA4R8y0DnILpITrbt4cu009mCsYwvH');
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Landing from './pages/landing/Landing';
+import Auth from './pages/Auth/Auth';
+import Cart from './pages/cart/Cart';
+import Orders from './pages/order/Orders';
+import Payment from './pages/payment/Payment';
+import Result from './pages/Result/Result';
+import ProdactDitail from './pages/ProductDtail/ProductDital';
+import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 
 function Routers() {
   return (
@@ -21,22 +15,24 @@ function Routers() {
       <Route path='/' element={<Landing />} />
       <Route path='/Auth' element={<Auth />} />
       <Route path='/cart' element={<Cart />} />
-      <Route path='/orders' element={<Orders />} />
       
-      {/* 3. የ Payment ገጽን በ Elements ጠቅልለው */}
-      <Route 
-        path='/payment' 
-        element={
-          <Elements stripe={stripePromise}>
-            <Payment />
-          </Elements>
-        } 
-      />
+      {/* ጥበቃ የሚደረግላቸው ገጾች */}
+      <Route path='/orders' element={
+        <ProtectedRoute msg="You must log in to see your orders" redirect="/orders">
+          <Orders />
+        </ProtectedRoute>
+      } />
+      
+      <Route path='/payment' element={
+        <ProtectedRoute msg="You must log in to pay" redirect="/payment">
+          <Payment />
+        </ProtectedRoute>
+      } />
       
       <Route path='/category/:CategoryName' element={<Result />} />
       <Route path='/Card/:id' element={<ProdactDitail />} />
     </Routes>
-  )
+  );
 }
 
-export default Routers
+export default Routers;
