@@ -1,24 +1,28 @@
-import React, {  useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Routers from './Routers.jsx';
-import { useStateValue } from './Components/dataprovider/Dataprovider.jsx'
+import { useStateValue } from './Components/dataprovider/Dataprovider.jsx';
 import { auth } from "./utilitiy/Firebase.js"; 
 import { Type } from "./utilitiy/Action.js";
 
+// Stripe አስፈላጊ ነገሮችን ማስገባት
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+
+// እዚህ ጋር የራስሽን ትክክለኛ "Publishable key" (pk_test_...) ተኪው
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+
 function App() {
-const [{ basket, user }, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
 
   useEffect(() => {
-    // Firebase ተጠቃሚው መግባቱን ወይም መውጣቱን በራሱ የሚከታተልበት መንገድ
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        // ተጠቃሚው ገብቷል (Login ሆኗል)
         dispatch({
           type: Type.SET_USER,
           user: authUser
         });
       } else {
-        // ተጠቃሚው አልገባም ወይም ወጥቷል (Logout ሆኗል)
         dispatch({
           type: Type.SET_USER,
           user: null
@@ -26,14 +30,14 @@ const [{ basket, user }, dispatch] = useStateValue();
       }
     });
 
-    // Component-ው ሲዘጋ ክትትሉን ለማቆም (Cleanup)
     return () => unsubscribe();
   }, [dispatch]);
 
   return (
-    <div>
+    // ሙሉውን Routers በ Elements መጠቅለል (Wrap ማድረግ)
+    <Elements stripe={stripePromise}>
       <Routers />
-    </div>
+    </Elements>
   );
 }
 

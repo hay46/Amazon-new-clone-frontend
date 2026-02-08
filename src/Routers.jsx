@@ -13,7 +13,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 
 // 2. የራስህን Stripe Public Key (pk_test...) እዚህ አስገባ
-const stripePromise = loadStripe('pk_test_የአንተ_ፐብሊክ_ኪይ_እዚህ_ይግባ');
+const stripePromise = loadStripe('pk_test_51SxpkKQlJYiEoQVCcvvx3uwdAXF9mHBHQJFXYV2YmsMEa26Lob3JsxSMY1fCKwq84rmsIA4R8y0DnILpITrbt4cu009mCsYwvH');
 
 function Routers() {
   return (

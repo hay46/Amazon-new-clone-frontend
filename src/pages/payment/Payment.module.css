@@ -13,3 +13,9 @@
     cursor: pointer; font-weight: bold;
 }
 .payment__priceContainer button:disabled { background-color: lightgray; border-color: gray; cursor: not-allowed; }
+.flex img{
+width: 80px !important;
+}
+.flex div{
+    height: auto !important;
+}

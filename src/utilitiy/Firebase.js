@@ -4,7 +4,8 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDEBdOhvdSOI7edrAWHAJJ2LxEVj-36_xA",
+  // ለ Vite ትክክለኛው አጻጻፍ ይህ ነው
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY, 
   authDomain: "clone-ff3f8.firebaseapp.com",
   projectId: "clone-ff3f8",
   storageBucket: "clone-ff3f8.firebasestorage.app",
