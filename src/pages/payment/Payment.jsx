@@ -33,12 +33,18 @@ function Payment() {
         if (total > 0) {
           const response = await axios({
             method: 'post',
-            url: `/payment/create?total=${total}`,
+            url: `/payment/create?total=${total}`, // Backend ላይ ካለው ጋር አንድ አይነት መሆኑን አረጋግጪ
           });
-          setClientSecret(response.data.clientSecret);
+          
+          if (response.data?.clientSecret) {
+            setClientSecret(response.data.clientSecret);
+          }
+        } else {
+          setClientSecret(null); // ቅርጫቱ ባዶ ከሆነ ሴክሬቱን አጥፊው
         }
       } catch (err) {
         console.log("Secret Error:", err);
+        setClientSecret(null);
       }
     };
     getClientSecret();
@@ -51,7 +57,15 @@ function Payment() {
 
  const handleSubmit = async (e) => {
   e.preventDefault();
+  
+  if (!user) {
+    setError("Please login to complete your payment");
+    setProcessing(false);
+    return;
+  }
+  
   setProcessing(true);
+  
 
   try {
     // 1. የ Stripe ክፍያ ማረጋገጫ መጠየቅ
