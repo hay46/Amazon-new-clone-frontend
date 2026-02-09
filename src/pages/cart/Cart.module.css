@@ -50,13 +50,13 @@
 }
 
 .cart_buttons button:hover {
-  color: #f0c14b;
+  color: #d8b252;
 }
 
 .increment_btn, 
 .decrease_btn {
   background-color: #febd69;
-  border: 1px solid #a88734;
+  border: 1.5px solid #a88734;
   border-radius: 4px;
   width: 30px;
   height: 30px;
@@ -71,7 +71,7 @@
 
 .increment_btn:hover, 
 .decrease_btn:hover {
-  background-color: #f3a847;
+  background-color: #f1a848;
 }
 
 .amount {

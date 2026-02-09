@@ -7,7 +7,7 @@ import Orders from './pages/order/Orders';
 import Payment from './pages/payment/Payment';
 import Result from './pages/Result/Result';
 import ProdactDitail from './pages/ProductDtail/ProductDital';
-import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from './Components/protectedRoute/ProtectedRoute'
 
 function Routers() {
   return (
