@@ -8,18 +8,18 @@ function CardInfos({ data }) {
   const [{ basket }, dispatch] = useStateValue();
 
   const ADD_TO_CART = () => {
-    dispatch({
-      type: Type.ADD_TO_BASKET,
-      payload: {
-        id: data.id,
-        title: data.title,
-        image: data.imageLink, // እዚህ ጋር imageLink የሚለውን ወደ image ቀይረነዋል ለReducer እንዲመች
-        price: data.price,
-        rating: data.rating,
-        description: data.description
-      }
-    });
-  };
+  dispatch({
+    type: Type.ADD_TO_BASKET,
+    payload: {
+      id: data.id,
+      title: data.title,
+      image: data.imageLink,
+      price: data.price || 0, // ዋጋ ከሌለው 0 እንዲወስድ
+      rating: data.rating || 0,
+      description: data.description
+    }
+  });
+};
 
   return (
     <div className="card-information">

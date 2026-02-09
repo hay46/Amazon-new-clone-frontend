@@ -78,6 +78,7 @@ export const CardinformationData = [
 
   {
     id: 11,
+     price: 56.99,
     title: "Card Title 3",
     description: "This is the description for Card 3.",
     imageLink: "https://m.media-amazon.com/images/I/61Tka+3Yq9L._AC_SY400_.jpg",
