@@ -38,12 +38,12 @@
   height: 30px;
   margin-bottom: 10px;
   background-color: white;
-  width: 98%;
+  width: 99%;
 }
 
 .login__container > p {
-  margin-top: 15px;
-  font-size: 13px;
+  margin-top: 14px;
+  font-size: 12px;
 }
 
 .login__signInButton {
