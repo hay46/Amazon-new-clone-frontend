@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap; /* ስክሪኑ ሲጠብ ካርዶቹ ወደ ታች እንዲወርዱ */
   justify-content: center;
-  margin-top: 30px; /* ዋናው ሚስጥር ይህ ነው! ካርዶቹን ወደ ላይ ይሰቅላቸዋል */
+  margin-top: 39px; /* ዋናው ሚስጥር ይህ ነው! ካርዶቹን ወደ ላይ ይሰቅላቸዋል */
   position: relative;
   z-index: 100; /* ከስላይደሩ በላይ እንዲሆኑ */
   padding: 0 20px;
@@ -12,7 +12,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 21px;
   position: relative;
   z-index: 5; /* መላው የካርድ ክፍል ከካሮሴሉ ውጤት በላይ እንዲሆን */
 }
