@@ -34,7 +34,7 @@
 .card-information h1 {
   font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 9px;
   color: #333;
   line-height: 1.4;
   display: -webkit-box;
@@ -48,13 +48,13 @@
   font-size: 0.8rem;
   color: #999;
   font-weight: 400;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 .img-description {
   font-size: 0.9rem;
   color: #666;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 3;
