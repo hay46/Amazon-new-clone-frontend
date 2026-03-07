@@ -4,7 +4,7 @@
   color: white;
   display: flex;
   align-items: center;
-  padding: 5px 15px;
+  padding: 5px 14px;
   height: 40px;
   font-family: "Amazon Ember", Arial, sans-serif;
   font-size: 14px;
@@ -16,7 +16,7 @@
   flex-direction: column;
   justify-content: center;
   cursor: pointer;
-  padding: 5px 8px;
+  padding: 5px 9px;
   border: 1px solid transparent;
   margin-right: 20px;
 }
@@ -47,7 +47,7 @@
 
 .lowerHeaderRight p {
   margin: 0;
-  padding: 9px 11px;
+  padding: 10px 11px;
   cursor: pointer;
   border: 1px solid transparent;
   white-space: nowrap;
