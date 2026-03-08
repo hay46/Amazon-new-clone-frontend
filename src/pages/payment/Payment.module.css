@@ -22,7 +22,7 @@ width: 80px !important;
 .loading{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 11px;
     justify-content: center;
     color: rgb(52, 52, 52);
 }
