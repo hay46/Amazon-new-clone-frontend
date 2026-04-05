@@ -1,12 +1,19 @@
 /* General Header Container */
+*{
+  margin: 0;
+  padding: 0;
+}
+.fixed{
+   position: sticky;
+  top: 0;
+  z-index: 100;
+}
 .header {
   height: 60px;
   display: flex;
   align-items: center;
   background-color: #131921;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+ 
   color: white;
 }
 

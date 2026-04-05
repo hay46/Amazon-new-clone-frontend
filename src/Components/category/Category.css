@@ -10,7 +10,6 @@
 
   /* --- መደራረቡን (Overlap) ለመከላከል --- */
   position: relative;
-  z-index: 100; /* ከካሮሴሉ ውጤት በላይ እንዲሆን */
   margin-top: -150px; /* የአማዞን ስታይል ለመከተል (ካሮሴሉ ላይ እንዲንሳፈፍ) */
 }
 .card-row-wrapper {

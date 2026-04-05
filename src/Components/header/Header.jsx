@@ -11,8 +11,11 @@ import {auth} from "../../utilitiy/Firebase"
 const Header = () => {
   // Use useContext to access your global state
 const [{ basket, user }, dispatch] = useStateValue();
+const totalItem=basket?.reduce((amount,item)=>{
+      return item.amount + amount
+},0)
   return (
-    <div>
+    <div className={classes.fixed}>
       <section className={classes.header}>
         {/* Top Navigation */}
         <section className={classes.header__main}>
@@ -111,7 +114,7 @@ const [{ basket, user }, dispatch] = useStateValue();
                 <span
                   className={`${classes.header__optionLineTwo} ${classes.header__basketCount}`}
                 >
-                  {basket?.length}
+                  {totalItem}
                 </span>
               </div>
             </Link>

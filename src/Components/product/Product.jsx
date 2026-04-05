@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Product.css";
 
-
-
 import ProductCard from "./ProductCard.jsx";
 
 const Product = () => {
